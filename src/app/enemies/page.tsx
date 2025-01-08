@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import card from "../page.module.scss";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useSearchParams } from "next/navigation";
 import { EnemiesArray } from "@/types/type";
@@ -64,12 +64,14 @@ const EnemiesPage = () => {
     <main>
       <section ref={refObj} id={card.cardContainer}>
         <div id={card.card}>
-          <div id={card.headline}>{data[id].name}</div>
-          <div id={card.imagecon}>
-            {/* på Image tag kan man pu fill for at billedet fylder den container den ligger i */}
-            <Image src={data[id].img} alt="picture" width={250} height={250} />
-          </div>
-          <div id={card.content}>{data[id].text}</div>
+          <Suspense>
+            <div id={card.headline}>{data[id].name}</div>
+            <div id={card.imagecon}>
+              {/* på Image tag kan man pu fill for at billedet fylder den container den ligger i */}
+              <Image src={data[id].img} alt="picture" width={250} height={250} />
+            </div>
+            <div id={card.content}>{data[id].text}</div>
+          </Suspense>
         </div>
       </section>
     </main>
