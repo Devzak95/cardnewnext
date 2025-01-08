@@ -7,6 +7,14 @@ import gsap from "gsap";
 import { useSearchParams } from "next/navigation";
 import { EnemiesArray } from "@/types/type";
 
+const EnemiesPageWithSuspense = () => {
+  return (
+    <Suspense>
+      <EnemiesPage />
+    </Suspense>
+  );
+};
+
 const EnemiesPage = () => {
   const data: EnemiesArray = [
     {
@@ -63,18 +71,16 @@ const EnemiesPage = () => {
   return (
     <main>
       <section ref={refObj} id={card.cardContainer}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <div id={card.card}>
-            <div id={card.headline}>{data[id].name}</div>
-            <div id={card.imagecon}>
-              {/* på Image tag kan man pu fill for at billedet fylder den container den ligger i */}
-              <Image src={data[id].img} alt="picture" width={250} height={250} />
-            </div>
-            <div id={card.content}>{data[id].text}</div>
+        <div id={card.card}>
+          <div id={card.headline}>{data[id].name}</div>
+          <div id={card.imagecon}>
+            {/* på Image tag kan man pu fill for at billedet fylder den container den ligger i */}
+            <Image src={data[id].img} alt="picture" width={250} height={250} />
           </div>
-        </Suspense>
+          <div id={card.content}>{data[id].text}</div>
+        </div>
       </section>
     </main>
   );
 };
-export default EnemiesPage;
+export default EnemiesPageWithSuspense;
