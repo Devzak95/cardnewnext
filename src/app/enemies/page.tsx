@@ -63,7 +63,7 @@ const EnemiesPage = () => {
   return (
     <main>
       <section ref={refObj} id={card.cardContainer}>
-        <Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
           <div id={card.card}>
             <div id={card.headline}>{data[id].name}</div>
             <div id={card.imagecon}>
