@@ -7,10 +7,8 @@ import gsap from "gsap";
 import { useSearchParams } from "next/navigation";
 import { EnemiesArray } from "@/types/type";
 
-// const data: EnemiesArray = [masser af data]
-
 const EnemiesPage = () => {
-  const data = [
+  const data: EnemiesArray = [
     {
       name: "Alien Scum",
       img: "/assets/black-alien-scum.png",
