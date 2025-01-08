@@ -2,7 +2,7 @@ import stylenav from "@/components/mynav.module.scss";
 import Link from "next/link";
 
 interface enemies {
-  name: String;
+  name: string;
 }
 
 const MyNav = () => {
